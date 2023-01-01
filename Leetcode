@@ -1,0 +1,12 @@
+ public int countDigits(int realNum) {
+        int count = 0;
+        int num=realNum;
+        while (num != 0) {
+            int x = num % 10;
+            if (realNum % x == 0) {
+                count++;
+            }
+            num = num / 10;
+        }
+       return count;
+    }

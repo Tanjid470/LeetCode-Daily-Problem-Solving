@@ -1,0 +1,7 @@
+ public int sumOddLengthSubarrays(int[] arr) {
+        int rslt=0;
+           for (int i = 0; i < arr.length; ++i) {
+            rslt += ((i + 1) * (arr.length - i) + 1) / 2 * arr[i];
+        }
+        return rslt;
+    }

@@ -10,4 +10,4 @@ public int subtractProductAndSum(int n) {
         return multi-sum;
 
     }
-}
+

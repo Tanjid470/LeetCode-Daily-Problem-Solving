@@ -1,0 +1,12 @@
+ public int countVowelStrings(int n) {
+        int a=1,b=1,c=1,d=1,e=1;
+        while(n>1){
+            a=a+b+c+d+e;
+            b=b+c+d+e;
+            c=c+d+e;
+            d=d+e;
+            e=e;
+            n--;
+        }
+        return a+b+c+d+e;
+    }

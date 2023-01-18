@@ -1,0 +1,16 @@
+  public int deleteGreatestValue(int[][] grid) {
+        int ans=0;
+        int width=grid[0].length;
+        int height=grid.length;
+        for(int i=0;i<height;i++){
+            Arrays.sort(grid[i]);
+        }
+        for(int j=width-1;j>=0;j--){
+            int max=0;
+            for(int i=0;i<height;i++){
+                max=Math.max(max,grid[i][j]);
+            }
+            ans+=max;
+        }
+        return ans;
+    }

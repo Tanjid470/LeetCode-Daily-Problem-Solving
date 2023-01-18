@@ -1,0 +1,23 @@
+  public String[] sortPeople(String[] names, int[] heights) {
+        String[] a=new String[names.length];
+        int i=0;
+        int[] n=new int[heights.length];
+        for(int l=0;l<heights.length;l++){
+            n[l]=heights[l];
+        }
+        Arrays.sort(n);
+          int k=heights.length-1;  
+
+        while(i!=names.length)
+        {
+        for(int j=0;j<heights.length;j++){
+            if(n[k]==heights[j]){
+                 a[i]=names[j];
+                 k--;
+                 i++;
+                 break;
+            }
+          }
+        }
+    return a;
+    }

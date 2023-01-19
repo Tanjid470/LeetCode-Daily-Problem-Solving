@@ -1,0 +1,19 @@
+ public int differenceOfSum(int[] nums) {
+        int digitsum=0;
+        int elesum=0;
+        for(int i=0;i<nums.length;i++){
+            elesum+=nums[i];
+            if(nums[i]>9){
+               while(nums[i]>0)
+               {
+                   int hold=nums[i]%10;
+                   digitsum+=hold;
+                   nums[i]=nums[i]/10;
+               }
+            }
+            else{
+                digitsum+=nums[i];
+            }
+        }
+        return Math.abs(digitsum-elesum);
+    }

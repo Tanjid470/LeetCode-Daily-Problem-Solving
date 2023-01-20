@@ -1,0 +1,19 @@
+ public int[][] largestLocal(int[][] grid) {
+        int[][] maxlocal=new int[grid[0].length-2][grid.length-2];
+        for(int i=0;i<maxlocal[0].length;i++){
+            for(int j=0;j<maxlocal.length;j++){
+                maxlocal[i][j]=Maxfind(i,j,grid);
+            }
+        }
+      return maxlocal;  
+    }
+    
+    static public int Maxfind(int i,int j,int[][] grid){
+        int max=Integer.MIN_VALUE;
+        for(int row=i;row<i+3;++row){
+            for(int col=j;col<j+3;++col){
+             max=Math.max(max,grid[row][col]);
+            }
+        }
+        return max;
+    }

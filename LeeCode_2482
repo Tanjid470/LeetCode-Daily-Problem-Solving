@@ -1,0 +1,19 @@
+ public int[][] onesMinusZeros(int[][] grid) {
+        int height=grid.length;
+        int width=grid[0].length;
+        int[] row=new int[height];
+        int[] col=new int[width];
+        for(int i=0;i<height;i++){
+            for(int j=0;j<width;j++){
+               row[i]+=grid[i][j]==1?1:0;
+               col[j]+=grid[i][j]==1?1:0;
+            }
+        }
+        int[][] diff=new int[height][width];
+         for(int i=0;i<height;i++){
+            for(int j=0;j<width;j++){
+             diff[i][j]=row[i]+col[j]-(width-row[i])-(height-col[j]);
+            }
+        }
+    return diff;
+    }

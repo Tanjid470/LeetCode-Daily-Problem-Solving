@@ -1,0 +1,19 @@
+int check(int num){
+        int sumdigit=0;
+        while(num!=0){
+            int hold=num%10;
+            sumdigit+=hold;
+            num=num/10;
+        }
+        return sumdigit;
+    }
+    public int addDigits(int num) {
+      int temp=0;
+      if(num>0 && num<=9)
+          return num;
+      while(num>9){
+          num=check(num);
+          temp=num;
+      }  
+      return temp;
+    }

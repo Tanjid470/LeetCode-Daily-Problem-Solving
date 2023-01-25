@@ -1,0 +1,19 @@
+ public int[] intersection(int[] num1, int[] num2) {
+        Set<Integer> set=new HashSet<>();
+        Set<Integer> ans=new HashSet<>();
+        for(int i=0;i<num1.length;i++){
+            set.add(num1[i]);
+        }
+        for(int i=0;i<num2.length;i++){
+            if(set.contains(num2[i])){
+                ans.add(num2[i]);
+            }           
+        }
+        int[] rslt=new int[ans.size()];
+        int i=0;
+        Iterator it=ans.iterator();
+        while(it.hasNext()){
+            rslt[i++]=(int) it.next();
+        }
+       return rslt;
+    }

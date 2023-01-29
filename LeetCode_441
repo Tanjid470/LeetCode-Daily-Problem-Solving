@@ -1,0 +1,10 @@
+ public int arrangeCoins(int n) {
+        int i=0;
+        int hold=0;
+        while(i<=n){
+            hold = i;
+            n = n-i;
+            i++;
+        }
+      return hold;  
+    }

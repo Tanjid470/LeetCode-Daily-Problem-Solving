@@ -1,0 +1,22 @@
+ public int[] rearrangeArray(int[] nums) {
+        int[] positive=new int[nums.length/2];
+        int[] negative=new int[nums.length/2];
+        int p=0,n=0;
+        for(int i=0;i<nums.length;i++){
+           if(nums[i]>=0){
+            positive[p++]=nums[i];
+           }
+           else{
+            negative[n++]=nums[i];
+           }
+        }
+        for(int i=0;i<nums.length;i++){
+           if(i%2==0){
+           nums[i]=positive[i/2];
+           }
+           else{
+           nums[i]=negative[i/2];
+           }
+        }
+        return nums;
+    }

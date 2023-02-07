@@ -1,0 +1,19 @@
+ public List<String> buildArray(int[] target, int n) {
+        LinkedList<String> ll=new LinkedList<>();
+        Stack<Integer> s=new Stack<>();
+        int i=0;
+        s.add(i);
+        int j=0;
+        while(i<=n && j<target.length){
+            s.add(++i); 
+            ll.add("Push"); 
+            if(s.peek()==target[j]){
+              j++;
+            }
+            else{
+                ll.add("Pop");
+                s.pop();
+            }
+        }
+        return ll;
+    }

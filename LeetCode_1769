@@ -1,0 +1,25 @@
+ static public int[] minOperations(String boxes) {
+        int[] min = new int[boxes.length()];
+        int sum = 0;
+        int left = 0;
+        int right = boxes.length() - 1;
+        for (int i = 0; i < boxes.length(); i++) {
+            while (left < i) {
+                if (boxes.charAt(left) == '1') {
+                    sum += i - left;
+                }
+                left++;
+            }
+            while (i < right) {
+                if (boxes.charAt(right) == '1') {
+                    sum += right - i;
+                }
+                right--;
+            }
+            left = 0;
+            right = boxes.length() - 1;
+            min[i] = sum;
+            sum = 0;
+        }
+        return min;
+    }

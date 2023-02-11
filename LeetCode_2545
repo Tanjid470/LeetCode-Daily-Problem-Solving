@@ -1,0 +1,21 @@
+ void swap(int[][] a,int r1,int r2){
+        for(int i=r1;i<r2;i++){
+            for(int j=0;j<a[0].length;j++){
+                int hold=a[i][j];
+                a[i][j]=a[i+1][j];
+                a[i+1][j]=hold;
+            }
+        }
+    }
+    public int[][] sortTheStudents(int[][] score, int k) {
+        int row=score[0].length;
+        int col=score.length;
+        for(int i=0;i<col-1;i++){
+            for(int j=0;j<col-1;j++){
+                if(score[j][k] < score[j+1][k]){
+                    swap(score,j,j+1);
+                }
+            }
+        }
+        return score;
+    }

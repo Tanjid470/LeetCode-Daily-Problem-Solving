@@ -1,0 +1,12 @@
+  public int maximumCount(int[] nums) {
+        int posiCount=0,negaCount=0;
+        for(int x =0 ;x<nums.length;x++){
+            if(nums[x]>0){
+              posiCount++;
+            }
+            else if(nums[x]<0){
+                negaCount++;
+            }
+        }
+        return Math.max(posiCount,negaCount);
+    }

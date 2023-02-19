@@ -1,0 +1,17 @@
+  public int[] sortArrayByParityII(int[] nums) {
+        int i=0,j=1,x=0;
+        int[] ans=new int[nums.length];
+
+        while(x<nums.length){
+            if(nums[x]%2==0){
+                ans[i]=nums[x];
+                i+=2;
+            }
+            else{
+                ans[j]=nums[x];
+                j+=2;
+            }
+        x++;
+        }
+    return ans;
+    }

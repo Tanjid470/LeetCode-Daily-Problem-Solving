@@ -1,0 +1,23 @@
+ public int[] canSeePersonsCount(int[] heights) {
+        int max=0;
+        int count=0;
+        int[] ans=new int[heights.length];
+        for(int i=0;i<heights.length-1;i++){
+             for(int j=i+1;j<heights.length;j++){
+                 if(heights[i]>heights[j] && heights[j]>max){
+                     max=Math.max(max,heights[j]);
+                     count++;
+                 }
+                 else if(heights[i]<heights[j]){
+                     count++;
+                     j=heights.length;
+                 }
+             }
+             max=0;
+             ans[i]=count;
+             count=0;
+        }
+        ans[heights.length-1]=0;
+
+    return ans;        
+    }

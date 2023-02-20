@@ -1,0 +1,34 @@
+public int[][] diagonalSort(int[][] mat) {
+    int m = mat.length;
+    int n = mat[0].length;
+    
+    // Iterate over the topmost row diagonals
+    for (int i = 0; i < n; i++) {
+        sortDiagonal(mat, 0, i, m, n);
+    }
+    
+    // Iterate over the leftmost column diagonals
+    for (int i = 1; i < m; i++) {
+        sortDiagonal(mat, i, 0, m, n);
+    }
+    
+    return mat;
+}
+
+// Sort a diagonal starting at cell (i, j)
+private void sortDiagonal(int[][] mat, int i, int j, int m, int n) {
+    int[] diagonal = new int[Math.min(m-i, n-j)];
+    
+    // Copy the diagonal elements to an array
+    for (int k = 0; k < diagonal.length; k++) {
+        diagonal[k] = mat[i+k][j+k];
+    }
+    
+    // Sort the diagonal elements in ascending order
+    Arrays.sort(diagonal);
+    
+    // Copy the sorted diagonal elements back to the matrix
+    for (int k = 0; k < diagonal.length; k++) {
+        mat[i+k][j+k] = diagonal[k];
+    }
+}

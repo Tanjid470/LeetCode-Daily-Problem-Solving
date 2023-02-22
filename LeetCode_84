@@ -1,0 +1,18 @@
+public int largestRectangleArea(int[] heights) {
+        if(heights.length==1){
+            return heights[0];
+        }
+        int maxArea=0;
+        int minh=0;
+        for(int i=0;i<heights.length;i++){
+            minh=heights[i];
+            for(int j=i+1;j<heights.length;j++){
+                minh=Math.min(minh,heights[j]);
+                int area=minh*(j-i+1);
+                maxArea=Math.max(maxArea,area);
+            }
+        }
+        for(int i=0;i<heights.length;i++){
+           maxArea=Math.max(maxArea,heights[i]);
+        }
+    return maxArea;  

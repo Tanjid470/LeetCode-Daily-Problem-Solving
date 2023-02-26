@@ -1,0 +1,14 @@
+ public int findNumbers(int[] nums) {
+        int count=0;
+        for(int i=0;i<nums.length;i++){
+            int x=nums[i];
+            int check=0;
+            while(x>0){
+                int hold=x%10;
+                x=x/10;
+                check++;
+            }
+            if(check%2==0) count++;
+        }
+        return count;
+    }

@@ -1,0 +1,33 @@
+void makeZero(int[][] matrix,int c,int r){
+        int m=0;
+        int n=0;
+        while(m<matrix[0].length){
+            matrix[c][m++]=0;
+        }
+        while(n<matrix.length){
+            matrix[n++][r]=0;
+        }
+    }
+
+    public void setZeroes(int[][] matrix) {
+        int[][] blank=new int[matrix.length][matrix[0].length];
+        for(int i=0;i<matrix.length;i++){
+            for(int j=0;j<matrix[0].length;j++){
+                blank[i][j]=1;
+            }
+        }       
+        for(int i=0;i<matrix.length;i++){
+            for(int j=0;j<matrix[0].length;j++){
+                if(matrix[i][j]==0){
+                    makeZero(blank,i,j);
+                }   
+            }
+        }   
+        for(int i=0;i<matrix.length;i++){
+            for(int j=0;j<matrix[0].length;j++){
+                if(blank[i][j]==0){
+                    matrix[i][j]=0;
+                }   
+            }
+        }              
+    }

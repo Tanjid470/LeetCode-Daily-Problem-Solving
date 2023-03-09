@@ -1,0 +1,36 @@
+ static public boolean BST(int[] num, int start, int last, int t) {
+        while (start <= last) {
+            int mid = (start + last) / 2;
+            if (num[mid] == t) {
+                return true;
+            }
+            if (num[start] <= num[mid]) {
+                if (t < num[mid] && t >= num[start]) {
+                    last = mid - 1;
+                } else {
+                    start = mid + 1;
+                }
+            } else {
+                if (t > num[mid] && t <= num[last]) {
+                    start = mid + 1;
+                } else {
+                    last = mid - 1;
+                }
+            }
+        }
+        return false;
+    }
+
+    static public boolean search(int[] nums, int target) {
+        Set<Integer> set=new LinkedHashSet<>();
+        for(int n : nums) set.add(n);
+        int[] num=new int[set.size()];
+        Iterator it=set.iterator();
+        int i=0;
+        while(it.hasNext()){
+            num[i++]=(int)it.next();
+        }
+        int start = 0;
+        int last = num.length - 1;
+        return BST(num, start, last, target);
+    }

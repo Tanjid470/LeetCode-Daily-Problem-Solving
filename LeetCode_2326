@@ -1,0 +1,50 @@
+public int[][] spiralMatrix(int m, int n, ListNode h) {
+        ListNode head=h;
+        int[][] matrix = new int[m][n];
+        for(int[] arr:matrix){
+            Arrays.fill(arr,-1);
+        }
+        int top = 0;
+        int bottom = m - 1;
+        int left = 0;
+        int right = n - 1;
+        while (head!=null) {
+            for (int i = left; i <= right; i++) {
+                if(head==null) break;
+                matrix[top][i] = head.val;
+                head=head.next;
+            }
+            top++;
+            if (left > right || top > bottom) {
+                break;
+            }
+            for (int i = top; i <= bottom; i++) {
+                if(head==null) break;
+                 matrix[i][right] = head.val;
+                head=head.next;
+            }
+            right--;
+            if (left > right || top > bottom) {
+                break;
+            }
+            for (int i = right; i >= left; i--) {
+                if(head==null) break;
+                matrix[bottom][i] = head.val;
+                head=head.next;
+            }
+            bottom--;
+            if (left > right || top > bottom) {
+                break;
+            }
+            for (int i = bottom; i >= top; i--) {
+                if(head==null) break;
+                matrix[i][left] = head.val;
+                head=head.next;
+            }
+            left++;
+            if (left > right || top > bottom) {
+                break;
+            }
+        }
+        return matrix; 
+    }

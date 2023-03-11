@@ -1,0 +1,28 @@
+
+ public int[][] generateMatrix(int n) {
+    List<Integer> ll=new ArrayList<>();
+    for(int i=1;i<=Math.pow(n,2);i++){
+        ll.add(i);
+    }
+    int index=0;
+    int[][] matrix=new int[n][n];
+    int top=0;
+    int bottom=n-1;
+    int left=0;
+    int right=n-1;
+    while(index<ll.size()){
+        for(int i=left;i<=right;i++) matrix[top][i]=(int)ll.get(index++);
+        top++;
+        if(left> right || top>bottom) break;
+        for(int i=top;i<=bottom;i++) matrix[i][right]=(int)ll.get(index++);
+        right--;
+        if(left> right || top>bottom) break;
+        for(int i=right;i>=left;i--) matrix[bottom][i]=(int)ll.get(index++);
+        bottom--;
+        if(left> right || top>bottom) break;
+        for(int i=bottom;i>=top;i--) matrix[i][left]=(int)ll.get(index++);
+        left++;
+        if(left> right || top>bottom) break;
+    }
+    return matrix;  
+    }

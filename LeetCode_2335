@@ -1,0 +1,12 @@
+ public int fillCups(int[] arr) {
+        int count=0;
+        Arrays.sort(arr);
+        while(arr[2]>0){
+            arr[2]--;
+            arr[1]--;
+            count++;
+            Arrays.sort(arr);
+        }
+
+        return count;
+    }

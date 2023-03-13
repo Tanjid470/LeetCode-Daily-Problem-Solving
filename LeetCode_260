@@ -1,0 +1,15 @@
+  public int[] singleNumber(int[] nums) {
+        Set<Integer> set=new HashSet<>();
+        if(nums.length<=2) return nums;
+        int[] ans=new int[2];
+        for(int n : nums){
+            if(!set.add(n)) {
+               set.remove(n);      
+            }
+        }
+        Iterator it=set.iterator();
+        int i=0;
+        while(it.hasNext())
+           ans[i++]=(int)it.next();
+        return ans ;
+    }

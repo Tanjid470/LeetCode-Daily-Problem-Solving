@@ -1,0 +1,20 @@
+ public int rob(int[] nums) {
+    if(nums.length<=3){
+    Arrays.sort(nums);
+    return nums[nums.length-1];
+    }  
+    return Math.max(rob(nums, 0, nums.length-2), rob(nums, 1, nums.length-1));
+
+    }
+    public int rob(int[] num, int low, int high) 
+    {
+    int include = 0, exclude = 0;
+    int i,e;
+    for (int j = low; j <=high; j++) {
+        i = include; 
+        e = exclude;
+        include = e + num[j];
+        exclude = Math.max(e, i);
+    }
+    return Math.max(include, exclude);
+    }

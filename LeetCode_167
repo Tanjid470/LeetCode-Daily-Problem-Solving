@@ -1,0 +1,14 @@
+public int[] twoSum(int[] num, int target) {
+        int[] ans=new int[2];
+        int left=0;
+        int right=num.length-1;
+        while(left<right){
+            int sum=num[left]+num[right];
+            if(sum==target) break;
+            else if(sum>target) right--;
+            else left++;
+        }
+    ans[0]=left+1;
+    ans[1]=right+1;
+    return ans;
+    }

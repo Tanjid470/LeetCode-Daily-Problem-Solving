@@ -1,0 +1,23 @@
+ public boolean Check(int val,int[][] matrix,int i,int j){
+        int r=matrix.length;
+        int c=matrix[0].length;
+        for(int x=0;x<r;x++){
+            if(val>=matrix[x][j]) continue;
+            else return false;
+        }
+        for(int x=0;x<c;x++){
+            if(val<=matrix[i][x]) continue;
+            else return false;
+        }
+        return true;
+    }
+
+    public List<Integer> luckyNumbers (int[][] matrix) {
+        ArrayList<Integer> al=new ArrayList<>();
+        for(int i=0;i<matrix.length;i++){
+            for(int j=0;j<matrix[0].length;j++){
+                if(Check(matrix[i][j],matrix,i,j)) al.add(matrix[i][j]);
+            }
+        }
+        return al;
+    }

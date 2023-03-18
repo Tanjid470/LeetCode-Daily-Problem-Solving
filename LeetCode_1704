@@ -1,0 +1,16 @@
+public boolean halvesAreAlike(String s) {
+        int len=s.length();
+        s=s.toLowerCase();
+        int stcount=0,endco=0;
+        for(int i=0;i<len/2;i++){
+            char st=s.charAt(i);
+            char end=s.charAt((len/2)+i);
+
+            if(st=='a' || st=='e' || st=='i'|| st=='o'|| st=='u')
+            stcount++;
+            if(end=='a' || end=='e' || end=='i'|| end=='o'|| end=='u')
+            endco++;
+        }
+        if(stcount==endco) return true;
+        return false;
+    }

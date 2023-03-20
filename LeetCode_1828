@@ -1,0 +1,17 @@
+  public int[] countPoints(int[][] points, int[][] queries) {
+    int[] res = new int[queries.length];
+    int i = 0;
+
+    for(int q[] : queries){
+        int count = 0;
+        for(int p[] : points)
+            if(dist(p[0], p[1], q[0], q[1]) <= q[2] * q[2])
+                count++;
+        res[i++] = count;
+    }
+    return res;
+}
+
+private int dist(int x1, int y1, int x2, int y2){
+    return (x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2);
+}

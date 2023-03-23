@@ -1,0 +1,39 @@
+public int makeConnected(int n, int[][] connections) {
+    // If there are not enough cables to connect all computers, return -1
+    if (connections.length < n - 1) {
+        return -1;
+    }
+
+    // Create an adjacency list to represent the graph
+    List<Integer>[] adjList = new List[n];
+    for (int i = 0; i < n; i++) {
+        adjList[i] = new ArrayList<>();
+    }
+    for (int[] connection : connections) {
+        adjList[connection[0]].add(connection[1]);
+        adjList[connection[1]].add(connection[0]);
+    }
+
+    boolean[] visited = new boolean[n];
+    int numComponents = 0;
+
+    // Traverse the graph using DFS and count the number of connected components
+    for (int i = 0; i < n; i++) {
+        if (!visited[i]) {
+            numComponents++;
+            dfs(i, adjList, visited);
+        }
+    }
+
+    // We can connect all the components by adding (numComponents - 1) cables
+    return numComponents - 1;
+}
+
+private void dfs(int vertex, List<Integer>[] adjList, boolean[] visited) {
+    visited[vertex] = true;
+    for (int neighbor : adjList[vertex]) {
+        if (!visited[neighbor]) {
+            dfs(neighbor, adjList, visited);
+        }
+    }
+}

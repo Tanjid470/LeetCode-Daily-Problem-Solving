@@ -1,0 +1,33 @@
+
+    public int closedIsland(int[][] grid) {
+        int n = grid.length;
+        int m = grid[0].length;
+        int closedIslands = 0;
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                if (grid[i][j] == 0) { 
+                    boolean isClosedIsland = dfs(grid, i, j, n, m); 
+                    if (isClosedIsland) {
+                        closedIslands++;
+                    }
+                }
+            }
+        }
+        return closedIslands;
+    }
+    
+    private boolean dfs(int[][] grid, int i, int j, int n, int m) {
+        if (i < 0 || i >= n || j < 0 || j >= m) {
+            return false;
+        }
+        if (grid[i][j] == 1) { 
+            return true;
+        }
+        grid[i][j] = 1; 
+        boolean isClosed = true;
+        isClosed &= dfs(grid, i-1, j, n, m); 
+        isClosed &= dfs(grid, i+1, j, n, m);
+        isClosed &= dfs(grid, i, j-1, n, m); 
+        isClosed &= dfs(grid, i, j+1, n, m); 
+        return isClosed;
+    }

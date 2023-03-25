@@ -1,0 +1,73 @@
+class Solution {
+    public String tictactoe(int[][] moves) {
+        // Initialize the game board with empty cells
+        char[][] board = new char[3][3];
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                board[i][j] = ' ';
+            }
+        }
+        
+        // Play the moves and check for a winner or draw after each move
+        char player = 'X';
+        for (int[] move : moves) {
+            int row = move[0];
+            int col = move[1];
+            board[row][col] = player;
+            
+            // Check for a winner or draw
+            if (hasWon(board, player)) {
+                return (player == 'X') ? "A" : "B";
+            } else if (isDraw(board)) {
+                return "Draw";
+            }
+            
+            // Switch to the other player
+            player = (player == 'X') ? 'O' : 'X';
+        }
+        
+        // If we haven't returned yet, the game is still pending
+        return "Pending";
+    }
+    
+    private boolean hasWon(char[][] board, char player) {
+        // Check for a win along each row
+        for (int i = 0; i < 3; i++) {
+            if (board[i][0] == player && board[i][1] == player && board[i][2] == player) {
+                return true;
+            }
+        }
+        
+        // Check for a win along each column
+        for (int j = 0; j < 3; j++) {
+            if (board[0][j] == player && board[1][j] == player && board[2][j] == player) {
+                return true;
+            }
+        }
+        
+        // Check for a win along the diagonal
+        if (board[0][0] == player && board[1][1] == player && board[2][2] == player) {
+            return true;
+        }
+        if (board[0][2] == player && board[1][1] == player && board[2][0] == player) {
+            return true;
+        }
+        
+        // If we haven't found a win, return false
+        return false;
+    }
+    
+    private boolean isDraw(char[][] board) {
+        // Check if all cells are filled
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (board[i][j] == ' ') {
+                    return false;
+                }
+            }
+        }
+        
+        // If we haven't returned yet, the game is a draw
+        return true;
+    }
+}

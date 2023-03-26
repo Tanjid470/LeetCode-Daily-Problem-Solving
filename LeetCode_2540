@@ -1,0 +1,19 @@
+class Solution {
+    public int com(int[] a1,int[] a2,int fl,int sl){
+        if(fl>a1.length-1 || sl>a2.length-1) return -1;
+        if(a1[fl]==a2[sl]) return a1[fl];
+        else if(a1[fl]<a2[sl]){
+            return com(a1,a2,fl+1,sl);  
+        }
+        else {
+            return com(a1,a2,fl,sl+1);
+        }
+      
+    }
+    public int getCommon(int[] nums1, int[] nums2) {
+        int firstleft=0;
+        int secondleft=0;
+        int ans=com(nums1,nums2,firstleft,secondleft);
+        return ans;
+    }
+}

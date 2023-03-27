@@ -1,0 +1,30 @@
+ public void change(int[][] matrix,int i,int j)
+    {
+        int m=matrix.length;
+        int n=matrix[0].length;
+        for(int x=0;x<n;x++){
+            matrix[i][x]=matrix[i][x]+1;
+        }
+        for(int x=0;x<m;x++){
+            matrix[x][j]=matrix[x][j]+1;
+        }
+    }
+
+    public int oddCells(int m, int n, int[][] indices) {
+        int[][] matrix=new int[m][n];
+        for (int[] row : matrix) {
+            Arrays.fill(row, 0);
+        }
+        int row=indices.length;
+        for(int i=0;i<row;i++){
+            int left=indices[i][0];
+            int right=indices[i][1];
+            change(matrix,left,right);
+        }
+        int odd=0;
+        for(int i=0;i<matrix.length;i++)
+            for(int j=0;j<matrix[0].length;j++)
+                if(matrix[i][j]%2!=0) odd++;
+
+    return odd;            
+    }

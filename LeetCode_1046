@@ -1,0 +1,23 @@
+public static int lastStoneWeight(int[] stones) {
+        Stack<Integer> al = new Stack<>();
+        for (int i = 0; i < stones.length; i++) {
+            al.add(stones[i]);
+        }
+
+        while (al.size()>1) {
+            Collections.sort(al);
+            //System.out.println(al);
+            int len = al.size();
+            if (al.get(len - 2) == al.get(len - 1)) {
+                al.pop();
+                al.pop();
+            } else {
+                int t=al.get(len - 1) - al.get(len - 2);               
+                Collections.sort(al);
+                al.pop();
+                al.pop();
+                al.add(t);
+            }
+        }
+        return al.empty() ? 0 : al.get(0);
+    }

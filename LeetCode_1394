@@ -1,0 +1,12 @@
+public int findLucky(int[] arr) {
+    Arrays.sort(arr);
+    for(int i=arr.length-1;i>=0;i--){
+        int hold=arr[i];
+        int count=0;
+        for(int j=0;j<arr.length;j++){
+            if(hold==arr[j]) count++;
+        }
+        if(count==hold) return hold;
+    }   
+        return -1;
+    }

@@ -1,0 +1,19 @@
+ public static boolean fun(int[][] mat,int i,int j,int val){
+        if(i<0 || j<0 || j>mat[0].length-1 || i>mat.length-1){
+            return true;
+        }
+        if(mat[i][j]==val) return fun(mat,i+1,j+1,val);
+    return false;    
+    }
+
+    public boolean isToeplitzMatrix(int[][] mat) {
+    int row=mat.length;
+    int col=mat[0].length;
+    for(int i=0;i<row;i++){
+        for(int j=0;j<col;j++){
+            boolean check=fun(mat,i,j,mat[i][j]);
+            if(check==false) return false;
+        }
+    }  
+    return true;
+    }

@@ -1,0 +1,19 @@
+
+    public int projectionArea(int[][] arr) {
+        int res=0;
+      int c=0;
+        for(int i=0;i<arr.length;i++){
+              int res1=-1;
+              int res2=-1;
+           
+            for(int j=0;j<arr.length;j++){
+                 if(arr[i][j]==0){
+                     c++;
+                 }
+                res1=Math.max(res1,arr[i][j]);
+                res2=Math.max(res2,arr[j][i]);
+            }
+            res+=res1+res2;
+        }
+        return res+arr.length*arr.length-c;
+    }

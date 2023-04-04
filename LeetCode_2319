@@ -1,0 +1,25 @@
+ public boolean di(int[][] grid,int i,int j){
+        //(i>grid.length-1) return true;
+        if(grid[i][j]==0)
+             return false;
+
+        return i==grid.length-1 ?  true : di(grid,i+1,j+1) ;
+    } 
+    public boolean d2(int[][] grid,int i,int j){
+        if(grid[i][j]==0) 
+            return false;
+
+        return i==grid.length-1 ? true : d2(grid,i+1,j-1);
+    }
+    public boolean checkXMatrix(int[][] grid) {
+    boolean leftup=di(grid,0,0);
+    boolean rightup=d2(grid,0,grid.length-1);   
+        for (int i = 0; i < grid.length; i++) {
+            for (int j = 0; j < grid.length; j++) {
+                if (i != j && i != grid.length-1-j && grid[i][j] != 0) {
+                    return false;
+                }
+            }
+        }
+    return leftup & rightup;
+    }

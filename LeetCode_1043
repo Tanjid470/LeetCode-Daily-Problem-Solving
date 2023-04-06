@@ -1,0 +1,14 @@
+public int maxSumAfterPartitioning(int[] arr, int k) {
+    int len = arr.length;
+    int[] dp = new int[len + 1];
+
+    for (int i = 1; i <= len; i++) {
+        int max_val = 0;
+        for (int j = 1; j <= k && i - j >= 0; j++) {
+            max_val = Math.max(max_val, arr[i - j]);
+            dp[i] = Math.max(dp[i], dp[i - j] + max_val * j);
+        }
+    }
+
+    return dp[len];
+}

@@ -1,0 +1,12 @@
+    public boolean judgeSquareSum(int c) {
+        long left=0;
+        long right=(long) Math.sqrt(c);
+        if(c<=1) return true;
+        while(left<=right){
+            long check=left*left+right*right;
+            if(check==c) return true;
+            else if(check>c) right--;
+            else left++;
+        }
+        return false;
+    }

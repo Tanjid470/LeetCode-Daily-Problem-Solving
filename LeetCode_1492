@@ -1,0 +1,7 @@
+  public int kthFactor(int n, int k) {
+        ArrayList<Integer> al=new ArrayList<>();
+        for(int i=1;i<=n;i++){
+            if(n%i==0) al.add(i);
+        }
+        return al.size()<k ? -1 : al.get(k-1);
+    }

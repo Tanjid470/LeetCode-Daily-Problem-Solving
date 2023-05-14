@@ -1,0 +1,22 @@
+static public List<Integer> selfDividingNumbers(int left, int right) {
+        ArrayList<Integer> al = new ArrayList<>();
+        while (left <= right) {
+            boolean flag = true;
+            int n = left;
+            while (n > 0 && flag == true) {
+                int hold = n % 10;
+                if(hold==0){
+                    flag=false;
+                }
+                else if (left % hold != 0) {
+                    flag = false;
+                }
+                n = n / 10;
+            }
+            if (flag == true) {
+                al.add(left);
+            }
+            left++;
+        }
+        return al;
+    }

@@ -1,0 +1,7 @@
+    public int smallestRangeI(int[] nums, int k) {
+       if(nums.length<=1) return 0;
+       Arrays.sort(nums);
+       int low=nums[0]+k;
+       int max=nums[nums.length-1]-k;
+       return max-low<0 ? 0 : max-low; 
+    }

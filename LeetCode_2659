@@ -1,0 +1,24 @@
+static public long countOperationsToEmptyArray(int[] nums) {
+        ArrayList<Integer> al = new ArrayList<>();
+        for (int x : nums) {
+            al.add(x);
+        }
+        
+        long count = 0;
+        while (!al.isEmpty()) {
+            Iterator it = al.iterator();
+            int hold = al.get(0);
+            boolean flag = true;
+            while (it.hasNext()) {
+                if (hold > (int) it.next()) {
+                    flag = false;
+                }
+            }
+            al.remove(0);
+            if (flag == false) {
+                al.add(hold);
+            }
+            count++;
+        }
+        return count;
+    }

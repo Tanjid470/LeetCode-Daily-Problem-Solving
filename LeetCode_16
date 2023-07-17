@@ -1,0 +1,30 @@
+static public int threeSumClosest(int[] nums, int target) {
+        Arrays.sort(nums);
+        ArrayList<Integer> al = new ArrayList<>();
+        for (int i = 0; i < nums.length - 2; i++) {
+            int sum = 0;
+            for (int j = i; j < i + 3; j++) {
+                sum += nums[j];
+            }
+            al.add(sum);
+        }
+        al.add(target);
+        int ans = 0;
+        al.sort(Comparator.naturalOrder());
+        System.out.println(al);
+        int targetIndex = al.indexOf(target);
+        int left = Integer.MAX_VALUE, right = 0;
+        try {
+            left = Math.abs(al.get(targetIndex - 1) - al.get(targetIndex));
+            ans = al.get(targetIndex - 1);
+        } catch (Exception e) {
+        }
+        try {
+            right = Math.abs(al.get(targetIndex + 1) - al.get(targetIndex));
+            if (right < left) {
+                ans = al.get(targetIndex + 1);
+            }
+        } catch (Exception e) {
+        }
+        return ans;
+    }

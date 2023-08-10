@@ -1,30 +1,70 @@
- public String convert(String s, int numRows) {
-    if (numRows == 1 || s.length() <= numRows) {
-        return s;
-    }
-    
-    StringBuilder[] rows = new StringBuilder[numRows];
-    for (int i = 0; i < numRows; i++) {
-        rows[i] = new StringBuilder();
-    }
-    
-    int currentRow = 0;
-    boolean goingDown = false;
-    
-    for (char c : s.toCharArray()) {
-        rows[currentRow].append(c);
-        
-        if (currentRow == 0 || currentRow == numRows - 1) {
-            goingDown = !goingDown;
+  static public String convert(String s, int numRows) {
+
+        int sSize = s.length();
+        if (numRows == 1) {
+            return s;
         }
-        
-        currentRow += goingDown ? 1 : -1;
+        char[][] zigzag = new char[numRows][sSize];
+        for (char[] row : zigzag) {
+            Arrays.fill(row, '0');
+        }
+        int index = 0;
+        boolean flag = true;
+        int lastIndex = 0;
+
+        if (numRows > 2) {
+            for (int i = 0; i < sSize; i++) {
+                for (int j = 0; j < numRows; j++) {
+                    if (index == sSize) {
+                        break;
+                    }
+                    if (flag == true) {
+                        zigzag[j][i] = s.charAt(index++);
+                        lastIndex = i + numRows - 1;
+                        if (j == numRows - 1) {
+                            flag = false;
+                        }
+                    } else {
+                        if (i + j == lastIndex) {
+                            zigzag[j][i] = s.charAt(index++);
+                            if (j == 1) {
+                                flag = true;
+                                j = numRows;
+                            }
+                        }
+                    }
+                }
+            }
+        } else {
+            for (int i = 0; i < sSize; i++) {
+                for (int j = 0; j < numRows; j++) {
+                     if (index == sSize) {
+                        break;
+                    }
+                  zigzag[j][i] = s.charAt(index++);  
+                }
+            }
+        }
+        String ans = "";
+        for (int j = 0; j < numRows; j++) {
+            for (int i = 0; i < sSize; i++) {
+                if (zigzag[j][i] != '0') {
+                    String convert = String.valueOf(zigzag[j][i]);
+                    ans += convert;
+                }
+            }
+        }
+
+//        for (int j = 0; j < numRows; j++) {
+//            for (int i = 0; i < sSize / 2; i++) {
+//                try {
+//                    System.out.print(zigzag[j][i] + " ");
+//                    Thread.sleep(100);
+//                } catch (Exception e) {
+//                }
+//
+//            }
+//            System.out.println("");
+//        }
+        return ans;
     }
-    
-    StringBuilder result = new StringBuilder();
-    for (StringBuilder row : rows) {
-        result.append(row);
-    }
-    
-    return result.toString();
-}

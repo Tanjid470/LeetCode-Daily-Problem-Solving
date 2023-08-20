@@ -1,0 +1,14 @@
+    public int dominantIndex(int[] source) {
+        int[] nums = Arrays.copyOf(source, source.length);
+        Arrays.sort(nums);
+        int lastIndex=nums.length-1;
+        int ans=0;
+        if(nums[lastIndex-1]*2>nums[lastIndex]) return -1;
+        for(int i =0;i<=lastIndex;i++){
+            if(source[i]==nums[lastIndex]){
+                ans=i;
+                 break;
+            }
+        }
+        return ans;
+    }

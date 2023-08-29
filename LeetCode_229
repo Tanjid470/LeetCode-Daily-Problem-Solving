@@ -1,0 +1,23 @@
+ public List<Integer> majorityElement(int[] nums) { 
+        int len = nums.length;
+        Map<Integer, Integer> frequencyMap = new HashMap<>();
+        Set<Integer> hashset=new HashSet<>();
+       // List<Integer> al=new ArrayList<>();
+        if(len<3) {
+            for (int element : nums) {
+              hashset.add(element);
+            }
+            return new ArrayList<>(hashset);
+        }
+       for (int num : nums) {
+            if (frequencyMap.containsKey(num)) {
+                // If the number is already in the map, increment its count
+                frequencyMap.put(num, frequencyMap.get(num) + 1);
+                if(frequencyMap.get(num)*3 >len) hashset.add(num);
+            } else {
+                // If the number is not in the map, add it with a count of 1
+                frequencyMap.put(num, 1);
+            }
+        }
+    return new ArrayList<>(hashset);
+    }

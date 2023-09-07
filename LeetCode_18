@@ -1,0 +1,31 @@
+public List<List<Integer>> fourSum(int[] nums, int target) {
+      Set<List<Integer>> lists = new HashSet<>();
+      Arrays.sort(nums);
+
+        for (int i = 0; i < nums.length; i++) {
+            int k = i + 1;
+            for (int second = i+1; second < nums.length - 1 ; second++) {
+                int left = second + 1;
+                int last = nums.length - 1;
+                while (left < last) {
+                   long sum = (long) nums[i] + (long) nums[second] + (long) nums[left] + (long) nums[last];
+                    if (sum == target) {
+                        List<Integer> list = new ArrayList<>();
+                        list.add(nums[i]);
+                        list.add(nums[second]);
+                        list.add(nums[left]);
+                        list.add(nums[last]);
+                        lists.add(list);
+                        last--;
+                        left++;
+                    } else if (sum < target) {
+                        left++;
+                    } else {
+                        last--;
+                    }
+                }
+            }
+
+        }
+        return new ArrayList<>(lists);
+    }

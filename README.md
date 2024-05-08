@@ -1,3 +1,7 @@
-### My Leet Code competitive programming solutions
+### My Leet Code 
+# competitive programming solutions
+Here have Name & Number
+It' Solution
 
-Here have problem number and it's solutions
+Each problem solved not focused on best approch ..I just focus on how can solve it...
+

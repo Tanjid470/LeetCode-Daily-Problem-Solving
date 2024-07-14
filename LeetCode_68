@@ -1,0 +1,77 @@
+package problemsolving;
+
+import java.util.*;
+import java.util.Scanner;
+
+public class ProblemSolving {
+
+    public static List<String> fullJustify(String[] words, int maxWidth) {
+        int count = -1;
+        String temp = "";
+        List<String> merge = new ArrayList<>();
+      
+        for (int i = 0; i < words.length; i++) {
+            int wordLen = words[i].length();
+            
+            if(count+wordLen+1 <= maxWidth){
+                count += wordLen+1;
+                temp += (temp.isEmpty() ? "" : " ")
+                        +words[i];
+            }
+            else{
+                merge.add(addSpaces(temp,maxWidth));
+                temp = "";
+                temp += words[i] ;
+                count = wordLen;
+            }
+        }
+        if(!temp.isEmpty()){
+            merge.add(leftJustifyLine(temp,maxWidth));
+        }
+      return merge;
+    }
+    
+    private static String leftJustifyLine(String line, int maxWidth) {
+        StringBuilder sb = new StringBuilder(line);
+        while (sb.length() < maxWidth) {
+            sb.append(" ");
+        }
+        return sb.toString();
+    }
+    
+    private static String addSpaces(String s, int width) {
+        StringBuilder sb = new StringBuilder();
+        String[] arr = s.split(" ");
+        int count = arr.length - 1;
+
+        if (count == 0) {
+            while (s.length() != width)
+                s += " ";
+            return s;
+        }
+
+        int padding = width - s.length();
+        int equalSpace = padding / count;
+        int moreNeeded = padding % count;
+        String spaces = " ";
+
+        while (equalSpace-- > 0)
+            spaces += " ";
+
+        String sp = spaces + " ";
+        for (String ele : arr) {
+            if (moreNeeded-- > 0)
+                sb.append(ele + sp);
+            else
+                sb.append(ele + spaces);
+        }
+        return sb.toString().trim();
+    }
+
+    public static void main(String[] args) {
+        String[] wrod = {"Science","is","what","we","understand","well","enough","to","explain","to","a","computer.","Art","is","everything","else","we","do"};
+        List<String> result = fullJustify(wrod,20);
+        System.out.println(result);
+    }
+
+}
